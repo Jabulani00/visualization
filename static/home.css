@@ -1,3 +1,20 @@
+/* Data Visualization & Analysis Tool Theme */
+
+:root {
+    --dark-purple: #260c1a;
+    --dark-purple-light: #381327;
+    --bright-orange: #f05d23;
+    --bright-orange-light: #f27b4d;
+    --lime-green: #c5d86d;
+    --lime-green-dark: #a5b755;
+    --off-white: #f7f7f2;
+    --text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    --gradient-bg: linear-gradient(135deg, var(--dark-purple) 0%, var(--dark-purple-light) 100%);
+    --accent-gradient: linear-gradient(135deg, var(--bright-orange) 0%, var(--bright-orange-light) 100%);
+    --secondary-gradient: linear-gradient(135deg, var(--lime-green-dark) 0%, var(--lime-green) 100%);
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,17 +24,25 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: var(--off-white);
     background-color: #f5f5f5;
+    background: var(--gradient-bg);
+    min-height: 100vh;
 }
 
 header {
-    background-color: #2c3e50;
-    color: white;
+    background: var(--gradient-bg);
+    color: var(--off-white);
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: var(--box-shadow);
+}
+
+header h1 {
+    text-shadow: var(--text-shadow);
+    font-weight: 600;
 }
 
 nav ul {
@@ -30,13 +55,15 @@ nav ul li {
 }
 
 nav a {
-    color: white;
+    color: var(--off-white);
     text-decoration: none;
     padding: 0.5rem;
+    transition: all 0.3s ease;
 }
 
 nav a.active, nav a:hover {
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid var(--bright-orange);
+    color: var(--bright-orange);
 }
 
 main {
@@ -48,36 +75,43 @@ main {
 .hero {
     text-align: center;
     padding: 4rem 1rem;
-    background-color: #ecf0f1;
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--box-shadow);
 }
 
 .hero h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #2c3e50;
+    color: var(--lime-green);
+    text-shadow: var(--text-shadow);
 }
 
 .hero p {
     font-size: 1.2rem;
     max-width: 800px;
     margin: 0 auto 2rem;
+    color: var(--off-white);
 }
 
 .cta-button {
     display: inline-block;
-    background-color: #3498db;
-    color: white;
+    background: var(--accent-gradient);
+    color: var(--off-white);
     padding: 0.8rem 2rem;
     border-radius: 4px;
     text-decoration: none;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: var(--box-shadow);
+    text-shadow: var(--text-shadow);
 }
 
 .cta-button:hover {
-    background-color: #2980b9;
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
 }
 
 .features {
@@ -87,7 +121,8 @@ main {
 .features h2 {
     text-align: center;
     margin-bottom: 2rem;
-    color: #2c3e50;
+    color: var(--lime-green);
+    text-shadow: var(--text-shadow);
 }
 
 .feature-grid {
@@ -97,23 +132,35 @@ main {
 }
 
 .feature {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.1);
     padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.feature:hover {
+    transform: translateY(-5px);
 }
 
 .feature h3 {
-    color: #3498db;
+    color: var(--bright-orange);
     margin-bottom: 0.8rem;
+    text-shadow: var(--text-shadow);
+}
+
+.feature p {
+    color: var(--off-white);
 }
 
 footer {
     text-align: center;
     padding: 2rem;
-    background-color: #2c3e50;
-    color: white;
+    background: var(--gradient-bg);
+    color: var(--off-white);
     margin-top: 3rem;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {
@@ -121,12 +168,16 @@ footer {
         flex-direction: column;
         text-align: center;
     }
-    
+   
     nav ul {
         margin-top: 1rem;
     }
-    
+   
     nav ul li {
         margin: 0 0.75rem;
+    }
+    
+    .feature-grid {
+        grid-template-columns: 1fr;
     }
 }
